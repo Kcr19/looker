@@ -1511,12 +1511,11 @@ view: tweets {
     approximate_threshold: 100000
     drill_fields: [user.statuses_count]
   }
-  measure: total_listed_users {
+  measure: userid {
     type: count
     approximate_threshold: 100000
-    drill_fields: [user.id]
+    drill_fields:[user.id]
   }
-
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
