@@ -476,7 +476,7 @@ view: tweets {
 
   dimension: place__country {
    map_layer_name: countries
-    sql: ${TABLE}.place.country ;;
+    sql: CASE WHEN ${TABLE}.place.country = 'United States' THEN 'United States of America' ELSE ${TABLE}.place.country END ;;
   }
 
   dimension: place__country_code {
@@ -1506,6 +1506,17 @@ view: tweets {
     approximate_threshold: 100000
     drill_fields: [retweet_count]
   }
+  measure: active_users {
+    type: count_distinct
+    approximate_threshold: 100000
+    drill_fields: [user.statuses_count]
+  }
+  measure: total_listed_users {
+    type: count
+    approximate_threshold: 100000
+    drill_fields: [user.id]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
