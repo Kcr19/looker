@@ -480,7 +480,7 @@ view: tweets {
   }
 
   dimension: place__country_code {
-    type: string
+    map_layer_name: countries
     sql: ${TABLE}.place.country_code ;;
   }
 
